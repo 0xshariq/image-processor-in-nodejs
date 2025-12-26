@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
  */
 async function processImage() {
     const startTime = Date.now();
-    
+
     try {
         const { imagePath, filename, outputDir, transformations, quality } = workerData;
 
@@ -42,8 +42,7 @@ async function processImage() {
                     operation: async () => {
                         const cloned = image.clone();
                         cloned.resize({ w: config.width, h: config.height });
-                        if (quality) cloned.quality(quality);
-                        await cloned.write(path.join(outputSubDirPath, config.filename));
+                        await cloned.write(path.join(outputSubDirPath, config.filename), quality ? { quality } : {});
                     },
                 });
             }
@@ -56,8 +55,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.greyscale();
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.grayscale.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.grayscale.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -69,8 +67,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.blur(transformations.blur.radius || 5);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.blur.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.blur.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -82,8 +79,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.sepia();
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.sepia.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.sepia.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -95,8 +91,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.invert();
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.invert.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.invert.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -108,8 +103,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.rotate(transformations.rotate.degrees || 90);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.rotate.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.rotate.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -121,8 +115,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.rotate(180);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.rotate180.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.rotate180.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -134,8 +127,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.rotate(270);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.rotate270.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.rotate270.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -147,8 +139,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.flip({ horizontal: true, vertical: false });
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.flipHorizontal.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.flipHorizontal.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -160,8 +151,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.flip({ horizontal: false, vertical: true });
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.flipVertical.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.flipVertical.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -173,8 +163,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.brightness(transformations.brightness.value || 0.2);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.brightness.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.brightness.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -186,8 +175,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.contrast(transformations.contrast.value || 0.3);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.contrast.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.contrast.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -199,8 +187,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.opacity(transformations.opacity.value || 0.8);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.opacity.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.opacity.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -212,8 +199,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.fade(transformations.fade.value || 0.5);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.fade.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.fade.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -225,8 +211,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.pixelate(transformations.pixelate.size || 10);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.pixelate.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.pixelate.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -238,8 +223,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.posterize(transformations.posterize.levels || 5);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.posterize.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.posterize.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -251,8 +235,7 @@ async function processImage() {
                 operation: async () => {
                     const cloned = image.clone();
                     cloned.normalize();
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.normalize.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.normalize.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -265,8 +248,7 @@ async function processImage() {
                     const cloned = image.clone();
                     const { red, green, blue } = transformations.colorTone;
                     cloned.color([{ apply: 'mix', params: [{ r: red || 255, g: green || 100, b: blue || 100 }, 50] }]);
-                    if (quality) cloned.quality(quality);
-                    await cloned.write(path.join(outputSubDirPath, transformations.colorTone.filename));
+                    await cloned.write(path.join(outputSubDirPath, transformations.colorTone.filename), quality ? { quality } : {});
                 },
             });
         }
@@ -278,17 +260,22 @@ async function processImage() {
                     await task.operation();
                     return { name: task.name, success: true };
                 } catch (error) {
+                    console.error(`Error in ${task.name}:`, error.message);
                     return { name: task.name, success: false, error: error.message };
                 }
             })
         );
 
         // Check for any failures
-        const failures = results.filter(r => r.status === 'rejected' || !r.value.success);
+        const failures = results.filter(r => r.status === 'rejected' || (r.status === 'fulfilled' && !r.value.success));
         if (failures.length > 0) {
-            const failedTasks = failures.map(f => 
-                f.status === 'rejected' ? f.reason : f.value.name
-            ).join(', ');
+            const failedTasks = failures.map(f => {
+                if (f.status === 'rejected') {
+                    return `${f.reason}`;
+                } else {
+                    return `${f.value.name} (${f.value.error})`;
+                }
+            }).join(', ');
             throw new Error(`Failed to process tasks: ${failedTasks}`);
         }
 
@@ -304,7 +291,7 @@ async function processImage() {
         });
     } catch (error) {
         const processingTime = Date.now() - startTime;
-        
+
         // Send error message back to main thread
         parentPort.postMessage({
             success: false,
@@ -312,7 +299,7 @@ async function processImage() {
             error: error.message,
             processingTime,
         });
-        
+
         // Exit with error code
         process.exit(1);
     }

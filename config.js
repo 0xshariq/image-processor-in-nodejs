@@ -61,7 +61,7 @@ export const config = {
                 filename: 'large.jpg',
             },
             xlarge: {
-                enabled: false,
+                enabled: true,
                 width: 1920,
                 height: 1920,
                 filename: 'xlarge.jpg',
@@ -78,78 +78,78 @@ export const config = {
                 filename: 'blur.jpg',
             },
             sepia: {
-                enabled: false,
+                enabled: true,
                 filename: 'sepia.jpg',
             },
             invert: {
-                enabled: false,
+                enabled: true,
                 filename: 'invert.jpg',
             },
 
             // Adjustment transformations
             brightness: {
-                enabled: false,
+                enabled: true,
                 value: 0.2, // -1 to 1 (0 = no change)
                 filename: 'brightness.jpg',
             },
             contrast: {
-                enabled: false,
+                enabled: true,
                 value: 0.3, // -1 to 1 (0 = no change)
                 filename: 'contrast.jpg',
             },
             opacity: {
-                enabled: false,
+                enabled: true,
                 value: 0.8, // 0 to 1
                 filename: 'opacity.png',
             },
             fade: {
-                enabled: false,
+                enabled: true,
                 value: 0.5, // 0 to 1
                 filename: 'fade.jpg',
             },
 
             // Rotation and flip
             rotate: {
-                enabled: false,
+                enabled: true,
                 degrees: 90, // Any degree value
                 filename: 'rotated.jpg',
             },
             rotate180: {
-                enabled: false,
+                enabled: true,
                 filename: 'rotate180.jpg',
             },
             rotate270: {
-                enabled: false,
+                enabled: true,
                 filename: 'rotate270.jpg',
             },
             flipHorizontal: {
-                enabled: false,
+                enabled: true,
                 filename: 'flip-h.jpg',
             },
             flipVertical: {
-                enabled: false,
+                enabled: true,
                 filename: 'flip-v.jpg',
             },
 
             // Effects
             pixelate: {
-                enabled: false,
+                enabled: true,
                 size: 10, // Pixel size
                 filename: 'pixelate.jpg',
             },
             posterize: {
-                enabled: false,
+                enabled: true,
                 levels: 5, // Number of color levels (2-255)
                 filename: 'posterize.jpg',
             },
             normalize: {
-                enabled: false,
+                enabled: true,
                 filename: 'normalize.jpg',
             },
 
             // Color adjustments
             colorTone: {
-                enabled: false,
+                enabled: true,
                 red: 255,
                 green: 100,
                 blue: 100,
