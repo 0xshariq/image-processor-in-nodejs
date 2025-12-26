@@ -10,5 +10,8 @@
   "keywords": [],
   "author": "Sharique Chaudhary",
   "license": "ISC",
-  "packageManager": "pnpm@10.26.0"
+  "packageManager": "pnpm@10.26.0",
+  "dependencies": {
+    "jimp": "^1.6.0"
+  }
 }
