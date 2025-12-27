@@ -140,4 +140,3 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 normal-output
-multi-threaded-output
